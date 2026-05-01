@@ -2,24 +2,37 @@ import time
 
 
 def parse(contents: str):
-    # TODO
-    pass
+    return list(map(int, contents.splitlines()))
 
 def part1(parsed):
-    # TODO
-    pass
+    jumps = parsed.copy()
+    i = 0
+    steps = 0
+    while 0 <= i < len(jumps):
+        dest = jumps[i]
+        jumps[i] += 1
+        i += dest
+        steps += 1
+    return steps
 
 def part2(parsed):
-    # TODO
-    pass
+    jumps = parsed.copy()
+    i = 0
+    steps = 0
+    while 0 <= i < len(jumps):
+        dest = jumps[i]
+        jumps[i] += 1 if dest < 3 else -1
+        i += dest
+        steps += 1
+    return steps
 
 def test_part1():
-    pass
+    assert part1([0, 3, 0, 1, -3]) == 5
 
 def test_part2():
-    pass
+    assert part2([0, 3, 0, 1, -3]) == 10
 
-filename = "day0.txt"
+filename = "day05.txt"
 if __name__ == '__main__':
     with open(f"inputs/{filename}", "r") as f:
         contents = f.read()
