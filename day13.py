@@ -2,27 +2,44 @@ import time
 
 
 def parse(contents: str):
-    # TODO
-    pass
+    walls = {}
+    for line in contents.splitlines():
+        splitted = line.split(": ")
+        walls[int(splitted[0])] = int(splitted[1])
+    return walls
 
 def part1(parsed):
-    # TODO
-    pass
+    result = 0
+    for pos, length in parsed.items():
+        if pos % ((length - 1) * 2) == 0:
+            result += pos * length
+    return result
 
 def part2(parsed):
-    # TODO
-    pass
+    delay = 0
+    while True:
+        detected = False
+        for pos, length in parsed.items():
+            if (pos+delay) % ((length - 1) * 2) == 0:
+                detected = True
+                break
+        if not detected:
+            return delay
+        delay += 1
 
-test_input = """"""
+test_input = """0: 3
+1: 2
+4: 4
+6: 4"""
 test_parsed = parse(test_input)
 
 def test_part1():
-    pass
+    assert part1(test_parsed) == 24
 
 def test_part2():
-    pass
+    assert part2(test_parsed) == 10
 
-filename = "day0.txt"
+filename = "day13.txt"
 if __name__ == '__main__':
     with open(f"inputs/{filename}", "r") as f:
         contents = f.read()
