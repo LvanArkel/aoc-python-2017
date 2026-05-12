@@ -32,12 +32,14 @@ if __name__ == '__main__':
     print(f"Parsing took {parse_end - parse_start} seconds")
 
     test_part1()
+    print("Passed tests for part 1")
     part1_start = time.time()
     print("Part 1:", part1(parsed))
     part1_end = time.time()
     print(f"Part 1 took {part1_end - part1_start} seconds")
 
     test_part2()
+    print("Passed tests for part 2")
     part2_start = time.time()
     print("Part 2:", part2(parsed))
     part2_end = time.time()
