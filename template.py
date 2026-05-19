@@ -17,10 +17,12 @@ test_input = """"""
 test_parsed = parse(test_input)
 
 def test_part1():
-    pass
+    result = part1(test_parsed)
+    assert result == None, result
 
 def test_part2():
-    pass
+    result = part2(test_parsed)
+    assert result == None, result
 
 filename = "day0.txt"
 if __name__ == '__main__':
